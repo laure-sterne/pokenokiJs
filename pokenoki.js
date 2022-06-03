@@ -20,7 +20,7 @@ function randomPokemon(pokemons) {
     // get a random pokemon
     const pokemon = pokemons[Math.floor(Math.random()*pokemons.length)];
     console.log("index 0 of pokemons", pokemons[0])
-    const pokemonDisplay = document.getElementById("allPokemons");
+    const pokemonDisplay = document.getElementById("pokemonImage");
 
     // const backgroundColor 
     document.getElementById("allPokemons").style.backgroundColor = pokemon.background_color;
@@ -37,8 +37,9 @@ function randomPokemon(pokemons) {
     pokemonImage.src = pokemon.image;
     pokemonImage.alt = pokemon.name;
     pokemonDisplay.appendChild(pokemonImage);
-    document.body.querySelector("img").backgroundImage = "url('" + pokemon.image + "')";
-    document.querySelector("img").setAttribute("alt", pokemon.name)
+    pokemonImage.setAttribute("id", "pokemonFigure")
+    document.getElementById("pokemonFigure").setAttribute("alt", pokemon.name)
+    document.getElementById("pokemonFigure").backgroundImage = "url('" + pokemon.image + "')";
     
     // add pokemon abilities
     const pokemonAbilities = pokemon.abilities
