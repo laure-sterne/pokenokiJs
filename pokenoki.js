@@ -3,7 +3,6 @@ const url = 'https://pokeapi-enoki.netlify.app/pokeapi.json';
 
 var pokemons;
 var pokemon;
-// console.log("I am global pokemons before", pokemons)
 
 // call pokemon api
 fetch(url)
@@ -22,8 +21,6 @@ fetch(url)
     .catch(function(error) {
         console.log("there is an error", error);
     });
-
-// console.log("I am global pokemons after", pokemons)
 
 
 function displayRandomPokemon() {
@@ -79,16 +76,16 @@ function addCard(changement) {
     console.log("I am added pokemon", addedPokemon)
 
     let clonePokemon = addedPokemon.cloneNode(true);
-    clonePokemon.id = "choosenPokemon"
+    clonePokemon.removeAttribute("id");
+    clonePokemon.classList.add("choosenPokemon");
 
     var children = clonePokemon.childNodes;
 
     for (var i = 0; i < children.length; i++) {    
-        children[i].id = "choosenPokemon" + index
+        children[i].id = index
 
     }
 
-    
     console.log("I am the clone", clonePokemon)
     changement.appendChild(clonePokemon);
 
