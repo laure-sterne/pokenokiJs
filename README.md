@@ -1,6 +1,6 @@
 # Pokenoki
 
-Born to a fusion between Pokemon and the company which gave me this challenge, Enoki, this project is a website to shuffle Pokenoki cards and 
+Pokenoki is born by a fusion between Pokemon and the company which gave me this challenge, Enoki. This project is a website to shuffle Pokenoki cards and add them in your deck. Do you want to give it a try? 👌
 
 ## Tech Stack
 
@@ -26,7 +26,7 @@ or https method
 
 When it is done, you can open the project in your IDE.
 
-To future see your future Pokenoki deck, you have to run the html file which will open a window in your web browser.
+To see your future Pokenoki deck, you have to run the html file which will open a window in your web browser. 
 
 Now, all you have to do is choose your best pokenoki team!
 
@@ -38,11 +38,11 @@ I keep all important links and documentation in a 📖 [logbook](https://laureuh
 
 What did you learn while building this project? What challenges did you face and how did you overcome them?
 
-It was really challenging to focus on front-end and especially the structure of the website. I have a lot of fun to work with this subject even the difficulties.
+It was really challenging to focus on front-end and especially the structure of the website. I had a lot of fun working on this subject despite the difficulties.
 
-I had quite problems to make my project responsive. It is something that I can work on it in next projects.
+I had some problems making my project responsive. It is something that I can practice more for next projects.
 
-I am also frustrated to give an incomplete project but it is the game.
+I am also frustrated to present an incomplete project. For example, I wanted to change the Pokenoki icon by attributing a variable instead of a number inside the url image.
 
 ## Related
 
