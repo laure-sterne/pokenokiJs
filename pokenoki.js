@@ -39,11 +39,10 @@ function displayRandomPokemon() {
     document.getElementById("allPokemons").style.backgroundColor = pokemon.background_color;
     
     // add name, level and icon
-    const pokemonName = pokemon.name;
-    const pokemonLevel = pokemon.level;
-    const pokemonIcon = pokemon.abilities[0].icon;
-    document.getElementById("pokemonName").innerText = pokemonName;
-    document.getElementById("pokemonLevel").innerText = "lvl" + pokemonLevel + " " + pokemonIcon;
+    var pokemonHeader = "";
+    pokemonHeader += "<h2>" + pokemon.name + "</h2>";
+    pokemonHeader += "<h2>" + "lvl" + pokemon.level + " " + pokemon.abilities[0].icon + "</h2>";
+    document.getElementById("pokemonHead").innerHTML = pokemonHeader;
     
     // add background image and pokemon
     const pokemonImage = document.createElement("img");
@@ -59,10 +58,9 @@ function displayRandomPokemon() {
     var allAbilities = "";
 
     for (a = 0; a < pokemonAbilities.length; a++){
-
         allAbilities += "<div>";
-        allAbilities += "<h2>" + pokemonAbilities[a].icon + " " + pokemonAbilities[a].name + "</h2>";
-        allAbilities += "<h2>" + pokemonAbilities[a].power + "</h2>";
+        allAbilities += "<h3>" + pokemonAbilities[a].icon + " " + pokemonAbilities[a].name + "</h3>";
+        allAbilities += "<h3>" + pokemonAbilities[a].power + "</h3>";
         allAbilities += "</div>";
         allAbilities += "<p>" + pokemonAbilities[a].description +"</p>";
     };
@@ -82,6 +80,14 @@ function addCard(changement) {
 
     let clonePokemon = addedPokemon.cloneNode(true);
     clonePokemon.id = "choosenPokemon"
+
+    var children = clonePokemon.childNodes;
+
+    for (var i = 0; i < children.length; i++) {    
+        children[i].id = "choosenPokemon" + index
+
+    }
+
     
     console.log("I am the clone", clonePokemon)
     changement.appendChild(clonePokemon);

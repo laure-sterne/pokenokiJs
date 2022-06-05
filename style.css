@@ -47,28 +47,33 @@ body {
   padding: 20px 20px 40px 20px;
 }
 
-#pokemonHead {
+#pokemonHead, #choosenPokemon div:first-child {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-content: flex-start;
 }
 
-#pokemonHead h1 {
+h2 {
   display: flex;
   align-content: flex-start;
 }
 
-#allPokemons h2, #pokemonHead h1 {
-  font-size: 12px;
+h2, h3 {
+  font-size: 8%;
+}
+
+#pokemonImage, #choosenPokemon div:nth-child(2) {
+  padding: 0%;
+  margin: 0%;
 }
 
 #pokemonImageBackground {
   object-fit: cover;
-  height: 150px;
+  height: 30%;
   width: 100%;
   border: 1px solid rgb(0, 0, 0);
-  margin: 0px 0px 15px 0px; 
+  margin: 0px 0px 5% 0px; 
 }
 
 #pokemonFigure {
@@ -77,18 +82,17 @@ body {
   left: 47%;
 }
 
-#pokemonAbilities div {
+#pokemonAbilities div, #choosenPokemon div div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 5%;
 }
 
-#pokemonAbilities p {
+p {
   text-align: left;
-  font-size: x-small;
   margin: 0px;
-  font-size: 7px;
+  font-size: 10%;
 }
 
 #leftPokemonCards, #rightPokemonCards {
@@ -101,18 +105,19 @@ body {
 .number {
   color: rgba(255, 255, 255, 0.3);
   text-align: center;
-  margin: 20px 0 20px 0;
+  margin: 10% 0 10% 0;
 }
 
 .number h1 {
   margin: 0px;
   font-style: bold;
+  font-size: large;
+  justify-content: center;
 }
 
 #firstPokemonCard, #secondPokemonCard, #thirdPokemonCard, #fourthPokemonCard, #fivePokemonCard, #sixPokemonCard {
   width: 100px;
-  height: 140px;
-  padding: 5px 5px 10px 5px;
+  height: 150px;
   color: #000;
   border: 4px solid #FFE557;
   border-radius: 8px;
@@ -122,6 +127,11 @@ body {
 
 .borderPokemonCard {
   border: 7px solid rgba(255, 255, 255, 0.3);
+}
+
+#choosenPokemon {
+  height:100%; 
+  width:100%;
 }
 
 #pokemonAction {
