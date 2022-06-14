@@ -4,6 +4,7 @@ const url = 'https://pokeapi-enoki.netlify.app/pokeapi.json';
 var pokemons;
 var pokemon;
 
+
 // call pokemon api
 fetch(url)
     .then(function(response) {
@@ -29,9 +30,6 @@ function displayRandomPokemon() {
     // get a random pokemon
     pokemon = pokemons[Math.floor(Math.random()*pokemons.length)];
 
-    // console.log("index 0 of pokemons", pokemons[0])
-    const pokemonDisplay = document.getElementById("pokemonImage");
-
     // const backgroundColor 
     document.getElementById("allPokemons").style.backgroundColor = pokemon.background_color;
     
@@ -41,14 +39,84 @@ function displayRandomPokemon() {
     pokemonHeader += "<h2>" + "lvl" + pokemon.level + " " + pokemon.abilities[0].icon + "</h2>";
     document.getElementById("pokemonHead").innerHTML = pokemonHeader;
     
+    // replace the pokemon figure according to the pokemon id
+    switch(pokemon.id){
+        default:
+            console.log("Sorry, I can't change url image of pokemon figure...");
+            break;
+        
+        case 1:
+            // if id = 1 then imageId = 152 for germignon
+            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/152.png";
+            console.log("I changed to the right pokemon figure germignon for id 1");
+            break;
+        
+        case 2:
+            // if id = 2 then imageId = 158 for kamininus
+            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/158.png";
+            console.log("I changed to the right pokemon figure kamininus for id 2");
+            break;
+    
+        case 3:
+            // if id = 3 then imageId = 133 for eevee / evoli
+            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png";
+            console.log("I changed to the right pokemon figure evoli for id 3");
+            break;
+
+        case 4:
+            // if id = 4 then imageId = 399 for keunotor
+            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/399.png";
+            console.log("I changed to the right pokemon figure keunotor for id 4");
+            break;
+
+        case 5:
+            // if id = 5 then imageId = 148 for draco
+            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png";
+            console.log("I changed to the right pokemon figure draco for id 5");
+            break;
+
+        case 6:
+            // if id = 6 then imageId = 25 for pikachu
+            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png";
+            console.log("I changed to the right pokemon figure pikachu for id 6");
+            break;
+
+        case 7:
+            // if id = 7 then imageId = 77 for ponyta
+            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png";
+            console.log("I changed to the right pokemon figure ponyta for id 7");
+            break;
+
+        case 8:
+            // if id = 8 then imageId = 398 for staraptor
+            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/398.png";
+            console.log("I changed to the right pokemon figure staraptor for id 8");
+            break;
+
+        case 9:
+            // if id = 9 then imageId = 383 for groudon
+            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/383.png";
+            console.log("I changed to the right pokemon figure groudon for id 9");
+            break;
+
+        case 10:
+            // if id = 10 then imageId = 470 for phyllali
+            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/470.png";
+            console.log("I changed to the right pokemon figure phyllali for id 10");
+            break;
+
+        case 11:
+            // if id = 11 then imageId = 873 for beldeneige
+            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/873.png";
+            console.log("I changed to the right pokemon figure beldeneige for id 11");
+            break;
+    };
+
     // add background image and pokemon
-    const pokemonImage = document.createElement("img");
-    pokemonImage.src = pokemon.image;
-    pokemonImage.alt = pokemon.name;
-    pokemonDisplay.appendChild(pokemonImage);
-    pokemonImage.setAttribute("id", "pokemonFigure");
-    document.getElementById("pokemonFigure").setAttribute("alt", pokemon.name);
-    document.getElementById("pokemonFigure").backgroundImage = "url('" + pokemon.image + "')";
+    var pokemonImage = "";
+    pokemonImage += "<img id='pokemonImageBackground' src='images/fond-carte.jpg' alt='background of the pokemon card' />"
+    pokemonImage += "<img id='pokemonFigure' src=" + pokemon.image + " alt="+ pokemon.name +">";
+    document.getElementById("pokemonImage").innerHTML = pokemonImage;
     
     // add pokemon abilities
     const pokemonAbilities = pokemon.abilities;
@@ -65,6 +133,7 @@ function displayRandomPokemon() {
     document.getElementById("pokemonAbilities").innerHTML = allAbilities;
     console.log("I am the actual index", pokemons.indexOf(pokemon));
 };
+
 
 // add card in deck 
 function addCard(changement) {
@@ -97,6 +166,7 @@ function addCard(changement) {
 
     console.log("pokemons - pokemon :", pokemons); 
 }
+
 
 // add card in differents cards
 function choosePokemon() {
@@ -161,6 +231,7 @@ function choosePokemon() {
     console.log("I am pokemons after choosen card", pokemons);
     // to be continued...
 };
+
 
 // start and stop the shuffle
 var counter = 15;

@@ -48,12 +48,13 @@ body {
   border: 4px solid #FFE557;
   border-radius: 8px;
   width: 50%;
-  height: 48%;
+  height: 50%;
 }
 
 #allPokemons {
   display: inline-block;
   height: 100%;
+  overflow: auto;
 }
 
 #pokemonHead, .choosenPokemon div:first-child {
@@ -65,10 +66,14 @@ body {
 
 #pokemonImage, .choosenPokemon div:nth-child(2) {
   margin: 5%;
+  position: relative;
 }
 
 #pokemonImageBackground {
   object-fit: cover;
+  position: relative;
+  top: 0;
+  left: 0;
   height: 30%;
   width: 100%;
   border: 1px solid rgb(0, 0, 0);
@@ -76,7 +81,9 @@ body {
 
 #pokemonFigure {
   position: absolute;
-  display: flex;
+  top: -10%;
+  left: 25%;
+  width: 50%;
 }
 
 #pokemonAbilities div, .choosenPokemon div div, p {
@@ -93,6 +100,10 @@ h2, h3 {
 
 p {
   font-size: 0.5em;
+}
+
+h2:first-child::first-letter, h3::first-letter, p::first-letter {
+  text-transform: uppercase;
 }
 
 #pokemonAction {
@@ -127,14 +138,16 @@ button {
 
 .number {
   color: rgba(255, 255, 255, 0.3);
-  width: 30%;
   align-self: center;
+  width: 50%;
+  margin: 3%;
 }
 
 .number h1 {
   font-style: bold;
   font-size: 1.5em;
   text-align: center;
+  margin: 0%;
 }
 
 .borderPokemonCard {
@@ -153,6 +166,8 @@ button {
 
 .choosenPokemon {
   overflow: auto;
+  width: 100%;
+  height: 100%;
 }
 
 
