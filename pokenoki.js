@@ -173,63 +173,24 @@ function choosePokemon() {
     console.log("I'm in choosePokemon");
     console.log("I am pokemons in choosePokemon()", pokemons);
 
-    if (document.getElementById("firstPokemonCard").childNodes.length === 0) {
-        let changement = document.getElementById("firstPokemonCard")
-        console.log("I am empty, I'll fill it with cards!");
-        addCard(changement);
-        displayRandomPokemon();
-    } else {
-        console.log("I am not empty, I'll go on next div -> 2!")
+    for (i = 0; i < document.getElementsByClassName("borderPokemonCard").length; i++) {
+        
+        let cardId = document.getElementsByClassName("borderPokemonCard")[i].childNodes[1]
 
-        if (document.getElementById("secondPokemonCard").childNodes.length === 0) {
-            let changement = document.getElementById("secondPokemonCard")
-            console.log("I am empty, I'll fill it with cards!");
-            addCard(changement);
+        if (cardId.childNodes.length == 0) {
+            console.log("I am empty, I'll fill it with the choosen Pokemon Card!");
+            addCard(cardId);
             displayRandomPokemon();
+            return
+        } else if (cardId.childNodes.length == 1 && i == 5) {
+            alert("You have your complete Pokemon deck!");
         } else {
-            console.log("I am not empty, I'll go on next div -> 3!")
+            console.log("I am full in index", i ,"I'll go on next index");
+        };
 
-            if (document.getElementById("thirdPokemonCard").childNodes.length === 0) {
-                let changement = document.getElementById("thirdPokemonCard")
-                console.log("I am empty, I'll fill it with cards!");
-                addCard(changement);
-                displayRandomPokemon();
-            } else {
-                console.log("I am not empty, I'll go on next div -> 4!")
-
-                if (document.getElementById("fourthPokemonCard").childNodes.length === 0) {
-                    let changement = document.getElementById("fourthPokemonCard")
-                    console.log("I am empty, I'll fill it with cards!");
-                    addCard(changement);
-                    displayRandomPokemon();
-                } else {
-                    console.log("I am not empty, I'll go on next div -> 5!")
-
-                    if (document.getElementById("fivePokemonCard").childNodes.length === 0) {
-                        let changement = document.getElementById("fivePokemonCard")
-                        console.log("I am empty, I'll fill it with cards!");
-                        addCard(changement);
-                        displayRandomPokemon();
-                    } else {
-                        console.log("I am not empty, I'll go on next div -> 6!")
-
-                        if (document.getElementById("sixPokemonCard").childNodes.length === 0) {
-                            let changement = document.getElementById("sixPokemonCard")
-                            console.log("I am empty, I'll fill it with cards!");
-                            addCard(changement);
-                            displayRandomPokemon();
-                        } else {
-                            console.log("I am not empty, I'll stop because my deck is full!")
-                        }
-                    }
-                }
-            }
-
-        }
-    }
+    };
 
     console.log("I am pokemons after choosen card", pokemons);
-    // to be continued...
 };
 
 
