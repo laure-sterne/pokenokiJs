@@ -142,7 +142,7 @@ function addCard(changement) {
 
     const index = pokemons.indexOf(pokemon);
 
-    console.log("I am added pokemon", addedPokemon)
+    console.log("I am added pokemon", addedPokemon);
 
     let clonePokemon = addedPokemon.cloneNode(true);
     clonePokemon.removeAttribute("id");
@@ -151,18 +151,17 @@ function addCard(changement) {
     var children = clonePokemon.childNodes;
 
     for (var i = 0; i < children.length; i++) {    
-        children[i].id = index
+        children[i].id = index;
+    };
 
-    }
-
-    console.log("I am the clone", clonePokemon)
+    console.log("I am the clone", clonePokemon);
     changement.appendChild(clonePokemon);
 
     console.log("pokemons in addCard", pokemons);
 
     if (index > -1) {
         pokemons.splice(index, 1); // 2nd parameter means remove one item only
-    }
+    };
 
     console.log("pokemons - pokemon :", pokemons); 
 }
@@ -175,7 +174,7 @@ function choosePokemon() {
 
     for (i = 0; i < document.getElementsByClassName("borderPokemonCard").length; i++) {
         
-        let cardId = document.getElementsByClassName("borderPokemonCard")[i].childNodes[1]
+        let cardId = document.getElementsByClassName("borderPokemonCard")[i].childNodes[1];
 
         if (cardId.childNodes.length == 0) {
             console.log("I am empty, I'll fill it with the choosen Pokemon Card!");
@@ -213,7 +212,7 @@ function changePokemon() {
 
         if (counter == 0) {
             stopPokemon();
-        }
+        };
 
     }, 1000);
 
