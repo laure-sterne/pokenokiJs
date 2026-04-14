@@ -1,6 +1,6 @@
 # Pokenoki
 
-Pokenoki is born by a fusion between Pokemon and the company which gave me this challenge, Enoki. This project is a website to shuffle Pokenoki cards and add them in your deck. Do you want to give it a try? 👌
+Pokenoki is born from a fusion between Pokemon and Enoki, the company which gave me this challenge. This project is a website to shuffle Pokenoki cards and add them to your deck. Do you want to give it a try? 👌
 
 ## Tech Stack
 
@@ -9,30 +9,32 @@ Pokenoki is born by a fusion between Pokemon and the company which gave me this 
 ## How to use the project
 
 To use the project
-- To discover all the Pokenoki, you can click [here](https://laure-sterne.github.io/pokenokiJs/) 🥚
+
+- To discover all the Pokenoki, you can discover [website](https://laure-sterne.github.io/pokenokiJs/) 🥚
 
 ## How to install and run locally the project
 
 Firstly, you can clone the repository in your machine with ssh method
 
 ```bash
-  git clone git@github.com:laure-sterne/pokenoki.git
+  git clone git@github.com:laure-sterne/pokenokiJs.git
 ```
+
 or https method
 
 ```bash
-  git clone https://github.com/laure-sterne/pokenoki.git
+  git clone https://github.com/laure-sterne/pokenokiJs.git
 ```
 
 When it is done, you can open the project in your IDE.
 
-To see your future Pokenoki deck, you have to run the html file which will open a window in your web browser. 
+To see your future Pokenoki deck, you have to run the html file which will open a window in your web browser.
 
 Now, all you have to do is choose your best pokenoki team!
 
 ## Documentation
 
-I keep all important links and documentation in a 📖 [logbook](https://laureuh.notion.site/Pokenoki-a3ce122370ab40f8a22f3912b4cd4580)   
+I keep all important links and documentation in a 📖 [logbook](https://laureuh.notion.site/Pokenoki-a3ce122370ab40f8a22f3912b4cd4580)
 
 ## Lessons Learned
 

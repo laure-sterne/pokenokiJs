@@ -1,100 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
     <title>Pokenoki</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div id="leftPokemonCards">
-       <div>
-            Coucou
+      <div class="number">
+        <h1>1</h1>
+        <div class="borderPokemonCard">
+          <div id="firstPokemonCard"></div>
+        </div>
       </div>
 
-        <div class="number">
-            <h1>1</h1>
-            <div class="borderPokemonCard">
-                <div id="firstPokemonCard"></div>
-            </div>
+      <div class="number">
+        <h1>2</h1>
+        <div class="borderPokemonCard">
+          <div id="secondPokemonCard"></div>
         </div>
-        
-        <div class="number">
-            <h1>2</h1>
-            <div class="borderPokemonCard">
-                <div id="secondPokemonCard"></div>
-            </div>
+      </div>
+
+      <div class="number">
+        <h1>3</h1>
+        <div class="borderPokemonCard">
+          <div id="thirdPokemonCard"></div>
         </div>
-        
-        <div class="number">
-            <h1>3</h1>
-            <div class="borderPokemonCard">
-                <div id="thirdPokemonCard"></div>
-            </div>
-        </div>
-        
+      </div>
     </div>
 
     <div id="center">
-       
-        <img id="logo" src="./images/logo.png" />
+      <img id="logo" src="./images/logo.png" />
 
-        <div id="centerPokemonCard" onclick="choosePokemon()">
-            <div id="allPokemons">
-                <div id="pokemonHead">
-                    <h2 id="pokemonName"></h2>
-                    <h2 id="pokemonLevel"></h2>
-                </div>
-                    
-                <div id="pokemonImage">
-                    <!-- <img id="pokemonImageBackground" src="images/fond-carte.jpg" alt="background of the pokemon card" /> -->
-                </div>
-                    
-                <div id="pokemonAbilities">
-                        
-                </div>
-            </div>
-        </div>
+      <div id="centerPokemonCard" onclick="choosePokemon()">
+        <div id="allPokemons">
+          <div id="pokemonHead">
+            <h2 id="pokemonName"></h2>
+            <h2 id="pokemonLevel"></h2>
+          </div>
 
-        <div id="pokemonAction">
-            <button id="start" onclick="changePokemon()">Lancer</button>
-            <button id="stop" onclick="stopPokemon()">Stop</button>
+          <div id="pokemonImage">
+            <!-- <img id="pokemonImageBackground" src="images/fond-carte.jpg" alt="background of the pokemon card" /> -->
+          </div>
+
+          <div id="pokemonAbilities"></div>
         </div>
-        
+      </div>
+
+      <div id="pokemonAction">
+        <button id="start" onclick="changePokemon()">Lancer</button>
+        <button id="stop" onclick="stopPokemon()">Stop</button>
+      </div>
     </div>
 
     <div id="rightPokemonCards">
+      <div class="number">
+        <h1>4</h1>
+        <div class="borderPokemonCard">
+          <div id="fourthPokemonCard"></div>
+        </div>
+      </div>
 
-        <div class="number">
-            <h1>4</h1>
-            <div class="borderPokemonCard">
-                <div id="fourthPokemonCard"></div>
-            </div>
+      <div class="number">
+        <h1>5</h1>
+        <div class="borderPokemonCard">
+          <div id="fivePokemonCard"></div>
         </div>
-        
-        <div class="number">
-            <h1>5</h1>
-            <div class="borderPokemonCard">
-                <div id="fivePokemonCard"></div>
-            </div>
+      </div>
+
+      <div class="number">
+        <h1>6</h1>
+        <div class="borderPokemonCard">
+          <div id="sixPokemonCard"></div>
         </div>
-        
-        <div class="number">
-            <h1>6</h1>
-            <div class="borderPokemonCard">
-                <div id="sixPokemonCard"></div>
-            </div>
-        </div>
-        
+      </div>
     </div>
 
     <div id="overlay"></div>
 
     <script type="text/javascript" src="pokenoki.js"></script>
-</body>
-
+    <script type="module" src="api.js"></script>
+  </body>
 </html>
