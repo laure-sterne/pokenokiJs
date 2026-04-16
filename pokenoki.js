@@ -1,226 +1,226 @@
-// set the url of the pokemon api
 const url = 'https://pokeapi-enoki.netlify.app/pokeapi.json';
 
-var pokemons;
-var pokemon;
-
-
-// call pokemon api
-fetch(url)
-    .then(function(response) {
-        return response.json();
-    })
-    
-    .then(function(data) {
-        console.log("le json est là : ", data);
-        pokemons = data.pokemons;
-        console.log("la variable pokemons : ", pokemons);
-        
-        displayRandomPokemon();
-    })
-
-    .catch(function(error) {
-        console.log("there is an error", error);
-    });
-
-
-function displayRandomPokemon() {
-    console.log("pokemons inside displayRandom", pokemons);
-
-    // get a random pokemon
-    pokemon = pokemons[Math.floor(Math.random()*pokemons.length)];
-
-    // const backgroundColor 
-    document.getElementById("allPokemons").style.backgroundColor = pokemon.background_color;
-    
-    // add name, level and icon
-    var pokemonHeader = "";
-    pokemonHeader += "<h2>" + pokemon.name + "</h2>";
-    pokemonHeader += "<h2>" + "lvl" + pokemon.level + " " + pokemon.abilities[0].icon + "</h2>";
-    document.getElementById("pokemonHead").innerHTML = pokemonHeader;
-    
-    // replace the pokemon figure according to the pokemon id
-    switch(pokemon.id){
-        default:
-            console.log("Sorry, I can't change url image of pokemon figure...");
-            break;
-        
-        case 1:
-            // if id = 1 then imageId = 152 for germignon
-            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/152.png";
-            console.log("I changed to the right pokemon figure germignon for id 1");
-            break;
-        
-        case 2:
-            // if id = 2 then imageId = 158 for kamininus
-            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/158.png";
-            console.log("I changed to the right pokemon figure kamininus for id 2");
-            break;
-    
-        case 3:
-            // if id = 3 then imageId = 133 for eevee / evoli
-            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png";
-            console.log("I changed to the right pokemon figure evoli for id 3");
-            break;
-
-        case 4:
-            // if id = 4 then imageId = 399 for keunotor
-            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/399.png";
-            console.log("I changed to the right pokemon figure keunotor for id 4");
-            break;
-
-        case 5:
-            // if id = 5 then imageId = 148 for draco
-            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png";
-            console.log("I changed to the right pokemon figure draco for id 5");
-            break;
-
-        case 6:
-            // if id = 6 then imageId = 25 for pikachu
-            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png";
-            console.log("I changed to the right pokemon figure pikachu for id 6");
-            break;
-
-        case 7:
-            // if id = 7 then imageId = 77 for ponyta
-            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png";
-            console.log("I changed to the right pokemon figure ponyta for id 7");
-            break;
-
-        case 8:
-            // if id = 8 then imageId = 398 for staraptor
-            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/398.png";
-            console.log("I changed to the right pokemon figure staraptor for id 8");
-            break;
-
-        case 9:
-            // if id = 9 then imageId = 383 for groudon
-            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/383.png";
-            console.log("I changed to the right pokemon figure groudon for id 9");
-            break;
-
-        case 10:
-            // if id = 10 then imageId = 470 for phyllali
-            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/470.png";
-            console.log("I changed to the right pokemon figure phyllali for id 10");
-            break;
-
-        case 11:
-            // if id = 11 then imageId = 873 for beldeneige
-            pokemon.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/873.png";
-            console.log("I changed to the right pokemon figure beldeneige for id 11");
-            break;
-    };
-
-    // add background image and pokemon
-    var pokemonImage = "";
-    pokemonImage += "<img id='pokemonImageBackground' src='images/fond-carte.jpg' alt='background of the pokemon card' />"
-    pokemonImage += "<img id='pokemonFigure' src=" + pokemon.image + " alt="+ pokemon.name +">";
-    document.getElementById("pokemonImage").innerHTML = pokemonImage;
-    
-    // add pokemon abilities
-    const pokemonAbilities = pokemon.abilities;
-    var allAbilities = "";
-
-    for (a = 0; a < pokemonAbilities.length; a++){
-        allAbilities += "<div>";
-        allAbilities += "<h3>" + pokemonAbilities[a].icon + " " + pokemonAbilities[a].name + "</h3>";
-        allAbilities += "<h3>" + pokemonAbilities[a].power + "</h3>";
-        allAbilities += "</div>";
-        allAbilities += "<p>" + pokemonAbilities[a].description +"</p>";
-    };
-
-    document.getElementById("pokemonAbilities").innerHTML = allAbilities;
-    console.log("I am the actual index", pokemons.indexOf(pokemon));
-};
-
-
-// add card in deck 
-function addCard(changement) {
-
-    let addedPokemon = document.getElementById("allPokemons");
-
-    const index = pokemons.indexOf(pokemon);
-
-    console.log("I am added pokemon", addedPokemon);
-
-    let clonePokemon = addedPokemon.cloneNode(true);
-    clonePokemon.removeAttribute("id");
-    clonePokemon.classList.add("choosenPokemon");
-
-    var children = clonePokemon.childNodes;
-
-    for (var i = 0; i < children.length; i++) {    
-        children[i].id = index;
-    };
-
-    console.log("I am the clone", clonePokemon);
-    changement.appendChild(clonePokemon);
-
-    console.log("pokemons in addCard", pokemons);
-
-    if (index > -1) {
-        pokemons.splice(index, 1); // 2nd parameter means remove one item only
-    };
-
-    console.log("pokemons - pokemon :", pokemons); 
+async function getAllPokenoki() {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Erreur HTTP : ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Erreur lors du fetch :', error);
+  }
 }
 
+let pokenokiData = null;
 
-// add card in differents cards
-function choosePokemon() {
-    console.log("I'm in choosePokemon");
-    console.log("I am pokemons in choosePokemon()", pokemons);
+async function init() {
+  pokenokiData = await getAllPokenoki();
+  console.log('pokenokiData', pokenokiData);
 
-    for (i = 0; i < document.getElementsByClassName("borderPokemonCard").length; i++) {
-        
-        let cardId = document.getElementsByClassName("borderPokemonCard")[i].childNodes[1];
+  getRightPokemonImage(pokenokiData);
+  console.log('pokenokiData after image update', pokenokiData);
 
-        if (cardId.childNodes.length == 0) {
-            console.log("I am empty, I'll fill it with the choosen Pokemon Card!");
-            addCard(cardId);
-            displayRandomPokemon();
-            return
-        } else if (cardId.childNodes.length == 1 && i == 5) {
-            alert("You have your complete Pokemon deck!");
-        } else {
-            console.log("I am full in index", i ,"I'll go on next index");
-        };
+  displayPokenokiCard();
 
-    };
+  // document.getElementById('centerPokemonCard').addEventListener('click', choosePokemon);
+  // document.getElementById('start').addEventListener('click', changePokemon);
+  // document.getElementById('stop').addEventListener('click', stopPokemon);
+}
 
-    console.log("I am pokemons after choosen card", pokemons);
-};
+init();
 
+function getRightPokemonImage(pokenokiList) {
+  for (const pokemon of pokenokiList.pokemons) {
+    switch (pokemon.id) {
+      case 1:
+        pokemon.image =
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/152.png';
+        continue;
 
-// start and stop the shuffle
-var counter = 15;
-var timer;
+      case 2:
+        pokemon.image =
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/158.png';
+        continue;
 
-function changePokemon() {
-    console.log("I start the count");
-    console.log("pokemons in changePokemon()", pokemons);
+      case 3:
+        pokemon.image =
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png';
+        continue;
 
-    timer = setInterval(function () {
-        console.log("I am in setInterval");
+      case 4:
+        pokemon.image =
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/399.png';
+        continue;
 
-        counter -= 1;
+      case 5:
+        pokemon.image =
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png';
+        continue;
 
-        displayRandomPokemon();
+      case 6:
+        pokemon.image =
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png';
+        continue;
 
-        document.getElementById("stop").innerText = "Stop (" + counter + " sec)";
+      case 7:
+        pokemon.image =
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/77.png';
+        continue;
 
-        if (counter == 0) {
-            stopPokemon();
-        };
+      case 8:
+        pokemon.image =
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/398.png';
+        continue;
 
-    }, 1000);
+      case 9:
+        pokemon.image =
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/383.png';
+        continue;
 
-};
+      case 10:
+        pokemon.image =
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/470.png';
+        continue;
 
-function stopPokemon() {
-    clearInterval(timer);
-    document.getElementById("stop").innerText = "Stop";
-    counter = 15;
-    console.log("I stopped");
-};
+      case 11:
+        pokemon.image =
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/873.png';
+        continue;
+
+      default:
+        console.log('Sorry, I cannot change url image of pokemon figure...');
+        continue;
+    }
+  }
+
+  return pokenokiList;
+}
+
+function getRandomPokenoki() {
+  let pokemonsList = pokenokiData.pokemons;
+  let pokemon = pokemonsList[Math.floor(Math.random() * pokemonsList.length)];
+
+  return pokemon;
+}
+
+function displayPokenokiCard() {
+  let pokemon = getRandomPokenoki();
+  console.log('I am the pokemon to display', pokemon);
+
+  document.getElementById('randomPokemonCard').style.backgroundColor =
+    pokemon.background_color;
+  document.getElementById('pokemonName').textContent = pokemon.name;
+  document.getElementById('pokemonLevel').textContent =
+    'lvl ' + pokemon.level + ' ' + pokemon.abilities[0].icon;
+
+  let pokemonImage = '';
+  pokemonImage +=
+    "<img id='pokemonImageBackground' src='images/cardBackground.jpg' alt='background of the pokemon card' />";
+  pokemonImage +=
+    "<img id='pokemonFigure' src=" +
+    pokemon.image +
+    ' alt=' +
+    pokemon.name +
+    '>';
+  document.getElementById('pokemonImage').innerHTML = pokemonImage;
+
+  const pokemonAbilities = pokemon.abilities;
+  let allAbilities = '';
+
+  for (const element of pokemonAbilities) {
+    allAbilities += '<div>';
+    allAbilities += '<h3>' + element.icon + ' ' + element.name + '</h3>';
+    allAbilities += '<h3>' + element.power + '</h3>';
+    allAbilities += '</div>';
+    allAbilities += '<p>' + element.description + '</p>';
+  }
+
+  document.getElementById('pokemonAbilities').innerHTML = allAbilities;
+}
+
+// function addPokenokiCard(changement) {
+//   let addedPokemon = document.getElementById('allPokemons');
+
+//   const index = pokenokiList.pokemons.indexOf(addedPokemon);
+
+//   console.log('I am added pokemon', addedPokemon);
+
+//   let clonePokemon = addedPokemon.cloneNode(true);
+//   clonePokemon.removeAttribute('id');
+//   clonePokemon.classList.add('choosenPokemon');
+
+//   let children = clonePokemon.childNodes;
+
+//   for (const element of children) {
+//     element.id = index;
+//   }
+
+//   console.log('I am the clone', clonePokemon);
+//   changement.appendChild(clonePokemon);
+
+//   console.log('pokemons in addCard', pokemons);
+
+//   if (index > -1) {
+//     pokemons.splice(index, 1); // 2nd parameter means remove one item only
+//   }
+
+//   console.log('pokemons - pokemon :', pokemons);
+// }
+
+// function choosePokemon() {
+//   console.log("I'm in choosePokemon");
+//   console.log('I am pokemons in choosePokemon()', pokenokiList);
+
+//   for (
+//     let i = 0;
+//     i < document.getElementsByClassName('borderPokemonCard').length;
+//     i++
+//   ) {
+//     let cardId =
+//       document.getElementsByClassName('borderPokemonCard')[i].childNodes[1];
+
+//     if (cardId.childNodes.length == 0) {
+//       console.log("I am empty, I'll fill it with the choosen Pokemon Card!");
+//       addPokenokiCard(cardId);
+//       displayRandomPokenoki();
+//       return;
+//     } else if (cardId.childNodes.length == 1 && i == 5) {
+//       alert('You have your complete Pokemon deck!');
+//     } else {
+//       console.log('I am full in index', i, "I'll go on next index");
+//     }
+//   }
+
+//   console.log('I am pokemons after choosen card', pokenokiList);
+// }
+
+// let counter = 15;
+// let timer;
+
+// function changePokemon() {
+//   console.log('I start the count');
+//   console.log('pokemons in changePokemon()', pokenokiList);
+
+//   timer = setInterval(function () {
+//     console.log('I am in setInterval');
+
+//     counter -= 1;
+
+//     displayRandomPokemon();
+
+//     document.getElementById('stop').innerText = 'Stop (' + counter + ' sec)';
+
+//     if (counter == 0) {
+//       stopPokemon();
+//     }
+//   }, 1000);
+// }
+
+// function stopPokemon() {
+//   clearInterval(timer);
+//   document.getElementById('stop').innerText = 'Stop';
+//   counter = 15;
+//   console.log('I stopped');
+// }
