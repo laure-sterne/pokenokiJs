@@ -1,0 +1,29 @@
+:root {
+  --color-primary: #db5d85;
+  --color-secondary: #5ddbb3;
+  --color-background: #f1f0f1;
+  --color-text: #262223;
+
+  --font-family-title: 'Caveat', cursive;
+  --font-family-texte: 'Libre Baskerville', serif;
+
+  --font-size-title: 4rem;
+  --font-size-subtitle: 2.5rem;
+  --font-size-text: 1.05rem;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-image: url('./images/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+}
