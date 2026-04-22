@@ -4,76 +4,77 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
     <link rel="stylesheet" href="style.css" />
     <title>Pokenoki</title>
   </head>
 
   <body>
-    <div id="leftPokemonCards">
-      <div class="number">
+    <div class="deck">
+      <div class="choosenCard">
         <h1>1</h1>
-        <div class="borderPokemonCard">
-          <div id="firstPokemonCard"></div>
+        <div class="borderChoosenCard">
+          <button id="firstPokemonCard"></button>
         </div>
       </div>
 
-      <div class="number">
+      <div class="choosenCard">
         <h1>2</h1>
-        <div class="borderPokemonCard">
-          <div id="secondPokemonCard"></div>
+        <div class="borderChoosenCard">
+          <button id="secondPokemonCard"></button>
         </div>
       </div>
 
-      <div class="number">
+      <div class="choosenCard">
         <h1>3</h1>
-        <div class="borderPokemonCard">
-          <div id="thirdPokemonCard"></div>
+        <div class="borderChoosenCard">
+          <button id="thirdPokemonCard"></button>
         </div>
       </div>
     </div>
 
-    <div id="center">
+    <div id="displayCard">
       <img id="logo" alt="Pokemon Logo" src="./images/logo.png" />
 
       <button id="centerPokemonCard">
-        <div id="randomPokemonCard">
-          <div id="pokemonHead">
-            <h2 id="pokemonName">Pokemon</h2>
-            <h2 id="pokemonLevel">lvl 1</h2>
-          </div>
-
-          <div id="pokemonImage"></div>
-
-          <div id="pokemonAbilities"></div>
+        <div class="pokemonHead">
+          <h2 class="pokemonName">Pokemon</h2>
+          <h2 class="pokemonLevel">Nv</h2>
         </div>
+
+        <div class="pokemonImage"></div>
+
+        <div class="pokemonAbilities"></div>
       </button>
 
-      <div id="pokemonAction">
+      <div class="ctaButtons">
         <button id="start">Lancer</button>
         <button id="stop">Stop</button>
       </div>
     </div>
 
-    <div id="rightPokemonCards">
-      <div class="number">
+    <div class="deck">
+      <div class="choosenCard">
         <h1>4</h1>
-        <div class="borderPokemonCard">
-          <div id="fourthPokemonCard"></div>
+        <div class="borderChoosenCard">
+          <button id="fourthPokemonCard"></button>
         </div>
       </div>
 
-      <div class="number">
+      <div class="choosenCard">
         <h1>5</h1>
-        <div class="borderPokemonCard">
-          <div id="fivePokemonCard"></div>
+        <div class="borderChoosenCard">
+          <button id="fivePokemonCard"></button>
         </div>
       </div>
 
-      <div class="number">
+      <div class="choosenCard">
         <h1>6</h1>
-        <div class="borderPokemonCard">
-          <div id="sixPokemonCard"></div>
+        <div class="borderChoosenCard">
+          <button id="sixPokemonCard"></button>
         </div>
       </div>
     </div>

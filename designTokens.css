@@ -1,15 +1,21 @@
 :root {
-  --color-primary: #db5d85;
-  --color-secondary: #5ddbb3;
-  --color-background: #f1f0f1;
-  --color-text: #262223;
+  --color-button-primary: #FFCB05;
+  --color-button-secondary: #CB5252;
+  --color-border: #FFE557;
+  --color-border-image: #6D777A;
+  --color-shadow: rgba(255, 255, 255, 0.2);
+  --color-background-overlay: rgba(0, 0, 0, 0.6);
+  --color-background: #FFFFFF;
+  --color-text: #000000;
 
-  --font-family-title: 'Caveat', cursive;
-  --font-family-texte: 'Libre Baskerville', serif;
+  --font-family-title: 'Hind', sans-serif;
+  --font-family-texte: 'Lato', sans-serif;
+  --font-size-title: 2.25em;
+  --font-size-subtitle: 0.8em;
+  --font-size-text: 0.4em;
 
-  --font-size-title: 4rem;
-  --font-size-subtitle: 2.5rem;
-  --font-size-text: 1.05rem;
+  --border-radius-button: 0.75em;  
+  --border-radius-choosen-card: 0.45em;
 }
 
 html {
@@ -25,5 +31,45 @@ body {
   justify-content: space-around;
   height: 100%;
   width: 100%;
-  font-family: sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-family-title);
+  font-weight: 700;
+  margin: 0%;
+}
+
+h1 {  
+  font-size: var(--font-size-title);
+}
+
+h2,
+h3 {
+  font-size: var(--font-size-subtitle);  
+  color: var(--color-text);
+}
+
+p {
+  font-family: var(--font-family-texte);
+  font-size: var(--font-size-text);
+  text-align: left;
+  margin: 1em 0em 4em 0em;
+}
+
+span {
+  font-size: var(--font-size-text);
+}
+
+h2:first-child::first-letter,
+h3::first-letter,
+p::first-letter {
+  text-transform: uppercase;
+}
+
+button {
+  font-family: var(--font-family-texte);
+  border-radius: var(--border-radius-button);
+  border: none;
+  padding: 1%;
+  margin: 5% 0 0 0;
 }
