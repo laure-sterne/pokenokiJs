@@ -1,4 +1,25 @@
 const url = 'https://pokeapi-enoki.netlify.app/pokeapi.json';
+let pokenokiData = null;
+let currentPokemon = null;
+let counter = 15;
+let timer = null;
+
+async function init() {
+  pokenokiData = await getAllPokenoki();
+  console.log('pokenokiData', pokenokiData);
+
+  getRightPokemonImage(pokenokiData);
+  console.log('pokenokiData after image update', pokenokiData);
+
+  displayPokenokiCard();
+
+  document.getElementById('centerPokemonCard').addEventListener('click', addPokenokiCard);
+  document.getElementById('start').addEventListener('click', startCountdown);
+  document.getElementById('stop').addEventListener('click', stopCountdown);
+}
+
+init();
+
 
 async function getAllPokenoki() {
   try {
@@ -13,23 +34,26 @@ async function getAllPokenoki() {
   }
 }
 
-let pokenokiData = null;
+function startCountdown() {
+  if (!timer) { 
+    timer = setInterval(function () {
+      counter -= 1;
+      displayPokenokiCard();
+      document.getElementById('stop').innerText = 'Stop (' + counter + ' sec)';
 
-async function init() {
-  pokenokiData = await getAllPokenoki();
-  console.log('pokenokiData', pokenokiData);
-
-  getRightPokemonImage(pokenokiData);
-  console.log('pokenokiData after image update', pokenokiData);
-
-  displayPokenokiCard();
-
-  // document.getElementById('centerPokemonCard').addEventListener('click', choosePokemon);
-  // document.getElementById('start').addEventListener('click', changePokemon);
-  // document.getElementById('stop').addEventListener('click', stopPokemon);
+      if (counter == 0) {
+        stopCountdown();
+      }
+    }, 1000);
+  }
 }
 
-init();
+function stopCountdown() {
+  clearInterval(timer);
+  timer = null;
+  document.getElementById('stop').innerText = 'Stop';
+  counter = 15;
+}
 
 function getRightPokemonImage(pokenokiList) {
   for (const pokemon of pokenokiList.pokemons) {
@@ -107,120 +131,56 @@ function getRandomPokenoki() {
 
 function displayPokenokiCard() {
   let pokemon = getRandomPokenoki();
-  console.log('I am the pokemon to display', pokemon);
+  currentPokemon = pokemon;
 
-  document.getElementById('randomPokemonCard').style.backgroundColor =
-    pokemon.background_color;
-  document.getElementById('pokemonName').textContent = pokemon.name;
-  document.getElementById('pokemonLevel').textContent =
-    'lvl ' + pokemon.level + ' ' + pokemon.abilities[0].icon;
+  document.getElementById('centerPokemonCard').style.backgroundColor = pokemon.background_color;
+  document.getElementById('centerPokemonCard').getElementsByClassName('pokemonName')[0].textContent = pokemon.name;
+  document.getElementById('centerPokemonCard').getElementsByClassName('pokemonLevel')[0].innerHTML = '<span>Nv</span> ' + pokemon.level + ' ' + pokemon.abilities[0].icon;
 
   let pokemonImage = '';
-  pokemonImage +=
-    "<img id='pokemonImageBackground' src='images/cardBackground.jpg' alt='background of the pokemon card' />";
-  pokemonImage +=
-    "<img id='pokemonFigure' src=" +
-    pokemon.image +
-    ' alt=' +
-    pokemon.name +
-    '>';
-  document.getElementById('pokemonImage').innerHTML = pokemonImage;
+  pokemonImage += "<img class='pokemonImageBackground' src='images/cardBackground.jpg' alt='background of the pokemon card' />";
+  pokemonImage += "<img class='pokemonFigure' src=" + pokemon.image + ' alt=' + pokemon.name + '>';
+  document.getElementById('centerPokemonCard').getElementsByClassName('pokemonImage')[0].innerHTML = pokemonImage;
 
   const pokemonAbilities = pokemon.abilities;
   let allAbilities = '';
-
   for (const element of pokemonAbilities) {
     allAbilities += '<div>';
-    allAbilities += '<h3>' + element.icon + ' ' + element.name + '</h3>';
+    allAbilities += '<h3>' + element.icon + ' ' + element.name.charAt(0).toUpperCase() + element.name.slice(1) + '</h3>';
     allAbilities += '<h3>' + element.power + '</h3>';
     allAbilities += '</div>';
     allAbilities += '<p>' + element.description + '</p>';
   }
-
-  document.getElementById('pokemonAbilities').innerHTML = allAbilities;
+  document.getElementById('centerPokemonCard').getElementsByClassName('pokemonAbilities')[0].innerHTML = allAbilities;
 }
 
-// function addPokenokiCard(changement) {
-//   let addedPokemon = document.getElementById('allPokemons');
+function addPokenokiCard() {
+  const deckSlots = [
+    'firstPokemonCard',
+    'secondPokemonCard',
+    'thirdPokemonCard',
+    'fourthPokemonCard',
+    'fivePokemonCard',
+    'sixPokemonCard'
+  ];
 
-//   const index = pokenokiList.pokemons.indexOf(addedPokemon);
+  const emptySlot = deckSlots
+    .map(id => document.getElementById(id))
+    .find(slot => slot.innerHTML.trim() === '');
 
-//   console.log('I am added pokemon', addedPokemon);
+  if (! emptySlot) {
+    alert('Your deck is full!');
+    return;
+  }
 
-//   let clonePokemon = addedPokemon.cloneNode(true);
-//   clonePokemon.removeAttribute('id');
-//   clonePokemon.classList.add('choosenPokemon');
+  emptySlot.innerHTML = document.getElementById('centerPokemonCard').innerHTML;
+  emptySlot.style.backgroundColor = document.getElementById('centerPokemonCard').style.backgroundColor;
 
-//   let children = clonePokemon.childNodes;
-
-//   for (const element of children) {
-//     element.id = index;
-//   }
-
-//   console.log('I am the clone', clonePokemon);
-//   changement.appendChild(clonePokemon);
-
-//   console.log('pokemons in addCard', pokemons);
-
-//   if (index > -1) {
-//     pokemons.splice(index, 1); // 2nd parameter means remove one item only
-//   }
-
-//   console.log('pokemons - pokemon :', pokemons);
-// }
-
-// function choosePokemon() {
-//   console.log("I'm in choosePokemon");
-//   console.log('I am pokemons in choosePokemon()', pokenokiList);
-
-//   for (
-//     let i = 0;
-//     i < document.getElementsByClassName('borderPokemonCard').length;
-//     i++
-//   ) {
-//     let cardId =
-//       document.getElementsByClassName('borderPokemonCard')[i].childNodes[1];
-
-//     if (cardId.childNodes.length == 0) {
-//       console.log("I am empty, I'll fill it with the choosen Pokemon Card!");
-//       addPokenokiCard(cardId);
-//       displayRandomPokenoki();
-//       return;
-//     } else if (cardId.childNodes.length == 1 && i == 5) {
-//       alert('You have your complete Pokemon deck!');
-//     } else {
-//       console.log('I am full in index', i, "I'll go on next index");
-//     }
-//   }
-
-//   console.log('I am pokemons after choosen card', pokenokiList);
-// }
-
-// let counter = 15;
-// let timer;
-
-// function changePokemon() {
-//   console.log('I start the count');
-//   console.log('pokemons in changePokemon()', pokenokiList);
-
-//   timer = setInterval(function () {
-//     console.log('I am in setInterval');
-
-//     counter -= 1;
-
-//     displayRandomPokemon();
-
-//     document.getElementById('stop').innerText = 'Stop (' + counter + ' sec)';
-
-//     if (counter == 0) {
-//       stopPokemon();
-//     }
-//   }, 1000);
-// }
-
-// function stopPokemon() {
-//   clearInterval(timer);
-//   document.getElementById('stop').innerText = 'Stop';
-//   counter = 15;
-//   console.log('I stopped');
-// }
+  const index = pokenokiData.pokemons.indexOf(currentPokemon);
+  pokenokiData.pokemons.splice(index, 1);
+  
+  console.log('pokenokiData after deletion of the pokemon figure', pokenokiData);
+  console.log('currentPokemon', currentPokemon);
+  
+  displayPokenokiCard();
+}
