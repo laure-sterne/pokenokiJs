@@ -160,8 +160,8 @@ function addPokenokiCard() {
     'secondPokemonCard',
     'thirdPokemonCard',
     'fourthPokemonCard',
-    'fivePokemonCard',
-    'sixPokemonCard'
+    'fifthPokemonCard',
+    'sixthPokemonCard'
   ];
 
   const emptySlot = deckSlots
@@ -173,8 +173,17 @@ function addPokenokiCard() {
     return;
   }
 
-  emptySlot.innerHTML = document.getElementById('centerPokemonCard').innerHTML;
-  emptySlot.style.backgroundColor = document.getElementById('centerPokemonCard').style.backgroundColor;
+  const centerCard = document.getElementById('centerPokemonCard');
+
+  emptySlot.innerHTML = centerCard.innerHTML;
+  emptySlot.style.backgroundColor = centerCard.style.backgroundColor;
+
+  const scaleRatio = emptySlot.offsetWidth / centerCard.offsetWidth;
+  const content = emptySlot.firstElementChild;
+
+  if (content) {
+    content.style.zoom = scaleRatio;
+  }
 
   const index = pokenokiData.pokemons.indexOf(currentPokemon);
   pokenokiData.pokemons.splice(index, 1);
